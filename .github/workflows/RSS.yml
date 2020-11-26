@@ -28,14 +28,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: ls -a
-
-      - name: Run a /home
-        run: ls -a /home
-      - name: Run a ./
-        run: ls -a ./
+        run: ls -a /Scripts
 
       # Runs a set of commands using the runners shell
       - name: Run build script
-        run: /.github/Scripts/RSS.sh
+        run: /Scripts/RSS.sh
         shell: bash
