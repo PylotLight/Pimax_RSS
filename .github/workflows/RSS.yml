@@ -24,32 +24,27 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
+     - uses: actions/checkout@master
+       with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+     - name: Create local changes
+       run: |
       # Runs a single command using the runners shell
-      - name: Run Query
-        run: curl 'https://www.youtube.com/results?search_query=intitle%3APimax&sp=CAISBAgCEAFCBAgAEgA%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)' | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[].itemSectionRenderer.contents[]? |.videoRenderer.title.runs[].text' > ./XML/RSS.xml
- 
+     - name: Run Query
+       run: curl 'https://www.youtube.com/results?search_query=intitle%3APimax&sp=CAISBAgCEAFCBAgAEgA%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)' | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[].itemSectionRenderer.contents[]? |.videoRenderer.title.runs[].text' > ./XML/RSS.xml
 
       # Runs a set of commands using the runners shell
-      - name: Run build script
-        run: sudo Scripts/RSS.sh
-        shell: bash
-
-      - uses: actions/checkout@master
-        with:
-            persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-            fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-      - name: Create local changes
-        run: |
-          ...
-      - name: Commit files
-        run: |
-          git config --local user.email "lochois@gmail.com"
-          git config --local user.name "Lochy"
-          git commit -m "Add changes" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+     - name: Run build script
+       run: sudo Scripts/RSS.sh
+       shell: bash
+     - name: Commit files
+       run: |
+        git config --local user.email "lochois@gmail.com"
+        git config --local user.name "Lochy"
+        git commit -m "Add changes" -a
+     - name: Push changes
+       uses: ad-m/github-push-action@master
+       with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
