@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run Query
-        run: curl 'https://www.youtube.com/results?search_query=intitle%3APimax&sp=CAISBAgCEAFCBAgAEgA%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)' | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[].itemSectionRenderer.contents[]? |.videoRenderer.title.runs[].text' > ../XML/RSS.xml
+        run: curl 'https://www.youtube.com/results?search_query=intitle%3APimax&sp=CAISBAgCEAFCBAgAEgA%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)' | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[].itemSectionRenderer.contents[]? |.videoRenderer.title.runs[].text' > ./XML/RSS.xml
  
 
       # Runs a set of commands using the runners shell
