@@ -21,7 +21,7 @@ echo "<?xml version='1.0' encoding='UTF-8'?>
 <generator>https://rss.app</generator>
 <lastBuildDate> $(date) </lastBuildDate>
 <atom:link href='https://rss.app/feeds/Xz4dI56N3r60UcoI.xml' rel='self' type='application/rss+xml'/><language>
-<![CDATA[ en ]]></language>" > ../XML/RSS.xml
+<![CDATA[ en ]]></language>" > ./XML/RSS.xml
 for vid in $(seq 1 $items)
 do
 echo "<item><title><![CDATA[ $title ]]></title>
@@ -29,7 +29,7 @@ echo "<item><title><![CDATA[ $title ]]></title>
 <link> ${link} </link>
 <guid isPermaLink='false'>0db24e910f2d4f08620ca0b584fcaeb2</guid><dc:creator><![CDATA[ ${owner} ]]></dc:creator>
 <pubDate> $(date) </pubDate>
-<media:content medium='image' url='https://i.ytimg.com/vi/gb3KM02CBIg/maxresdefault.jpg'/></item>" >> ../XML/RSS.xml
+<media:content medium='image' url='https://i.ytimg.com/vi/gb3KM02CBIg/maxresdefault.jpg'/></item>" >> ./XML/RSS.xml
 done
-echo '</channel></rss>' >> ../XML/RSS.xml
+echo '</channel></rss>' >> ./XML/RSS.xml
 
