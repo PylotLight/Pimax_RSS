@@ -1,6 +1,6 @@
 #!/bin/bash 
 yt=$(echo "https://Youtube.com")
-json=$(curl 'https://www.youtube.com/results?search_query=intitle%3APimax&sp=CAISBAgCEAFCBAgAEgA%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)')
+json=$(curl 'https://www.youtube.com/results?search_query=intitle%3Apimax&sp=CAISBAgCEAE%253D' | grep -Po '(?<=ytInitialData = ).*(?<=:{}}|]};)')
 items=$(echo $json | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[]?.itemSectionRenderer.contents[]? | length' )
 title=$(echo "$json" | jq -r  '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[]?.itemSectionRenderer.contents[]? | .videoRenderer.title.runs[]?.text')
 videoID=$(echo "$json" | jq -r '.contents.twoColumnSearchResultsRenderer.primaryContents.sectionListRenderer.contents[]?.itemSectionRenderer.contents[]? | .videoRenderer.videoId')
@@ -12,11 +12,11 @@ owner=$(echo $json | jq -r '.contents.twoColumnSearchResultsRenderer.primaryCont
 BuildDate=$(echo date) 
 echo "<?xml version='1.0' encoding='UTF-8'?>
 <rss xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:content='http://purl.org/rss/1.0/modules/content/' xmlns:atom='http://www.w3.org/2005/Atom' xmlns:media='http://search.yahoo.com/mrss/' version='2.0'><channel><title><![CDATA[ Pimax - YouTube ]]></title><description><![CDATA[ Pimax - YouTube ]]></description>
-<link>https://www.youtube.com/results?search_query=intitle%3APimax&amp;sp=CAISBAgCEAFCBAgAEgA%253D</link>
+<link>https://www.youtube.com/results?search_query=intitle%3Apimax&amp;sp=CAISBAgCEAE%253D</link>
 <image>
 <url>https://www.youtube.com/s/desktop/a386e432/img/favicon.ico</url>
 <title>Pimax - YouTube</title>
-<link>https://www.youtube.com/results?search_query=intitle%3APimax&amp;sp=CAISBAgCEAFCBAgAEgA%253D</link>
+<link>https://www.youtube.com/results?search_query=intitle%3Apimax&amp;sp=CAISBAgCEAE%253D</link>
 </image>
 <generator>https://github.com</generator>
 <lastBuildDate> $(date) </lastBuildDate>
