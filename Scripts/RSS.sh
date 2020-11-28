@@ -18,9 +18,9 @@ echo "<?xml version='1.0' encoding='UTF-8'?>
 <title>Pimax - YouTube</title>
 <link>https://www.youtube.com/results?search_query=intitle%3APimax&amp;sp=CAISBAgCEAFCBAgAEgA%253D</link>
 </image>
-<generator>https://rss.app</generator>
+<generator>https://github.com</generator>
 <lastBuildDate> $(date) </lastBuildDate>
-<atom:link href='https://rss.app/feeds/Xz4dI56N3r60UcoI.xml' rel='self' type='application/rss+xml'/><language>
+<atom:link href='hhttps://raw.githubusercontent.com/PylotLight/Pimax_RSS/master/XML/RSS.xml' rel='self' type='application/rss+xml'/><language>
 <![CDATA[ en ]]></language>" > ./XML/RSS.xml
 for vid in $(seq 1 $items)
 do
