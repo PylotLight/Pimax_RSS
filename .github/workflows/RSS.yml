@@ -1,15 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: RSS_Update
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  schedule:
+    - cron: "*/60 */4 * * *"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,7 +34,7 @@ jobs:
        shell: bash
      - name: Commit files
        run: |
-        git config --local user.email "lochois@gmail.com"
+        git config --local user.email "${{ secrets.EMAIL }}"
         git config --local user.name "Lochy"
         git add ./
         git commit -m "Add changes" -a
